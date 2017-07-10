@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Primefaces</title>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<p:growl id="msgs" showDetail="true" />
+
+	
+			<p:outputLabel for="popup" value="Data:" />
+			<p:calendar id="popup" value="#{calendarView.date2}" />
+
+		<p:commandButton value="Submit" update="msgs"
+			actionListener="#{calendarView.click}" icon="ui-icon-check" />
+
+		<p:dialog modal="true" resizable="false" header="Values"
+			widgetVar="dlg" showEffect="fold">
+			<p:panelGrid id="display" columns="2" columnClasses="label,value">
+				<h:outputText value="Data:" />
+				<h:outputText value="#{calendarView.date2}">
+					<f:convertDateTime pattern="MM/dd/yyyy" />       
+				</h:outputText>
+			</p:panelGrid>
+		</p:dialog>
+	</h:form>
+	
+</h:body>
+</html>
